@@ -1,5 +1,6 @@
 package com.preproject.preproject.questions.entity;
 
+import com.preproject.preproject.users.entity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,10 +12,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "QUESTIONS_DISLIKES")
 @Entity
 public class QuestionDislike {
 
-    //todo : user
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionDislikeId;
@@ -22,4 +23,8 @@ public class QuestionDislike {
     @ManyToOne
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private Users user;
 }
